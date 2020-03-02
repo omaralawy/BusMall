@@ -1,5 +1,5 @@
 'use strict';
-    var itemimages =[
+    var itemimages = [
         'bag.jpg',
         'banana.jpg',
         'bathroom.jpg',
@@ -25,13 +25,16 @@
      var leftItemimage = document.querySelector('#left_item_img');
      var centerItemimage = document.querySelector('#center_item_img');
      var rightItemimage = document.querySelector('#right_item_img');
+     var allItem = document.getElementById('all_shope_item');
      var items = [];
     //  var totalClick =1;
     function Item(name){
         this.name = name;
-        this.urlimage = `img/${this.name}`;
+        this.urlimage = `images/${this.name}`;
         items.push(this);
+
     };
+
     function randomImages() { 
         var leftItemimage = items[randomNumber(0 , items.length-1 )];
         var centerItemimage = items[randomNumber(0 , items.length-1)];
@@ -42,12 +45,12 @@
         venterItemImage.setAttribute('alt' , centerItemimage.name);
         rightItemImage.setAttribute('src' , rightItemImage.urlimage);
         rightItemImage.setAttribute('alt' , rightItemimage.name);
-        while (lefItemimage === rightItemimage ) {
-            
-        }
+        while(leftItemRandom.name === middleItemRandom.name || leftItemRandom.name === rightItemRandom.name || middleItemRandom.name === rightItemRandom.name ){
+            randomImages();
+          }
     }
     
-    for (var i = 0; i < itemimages.length; i++) {
+    for (var i = 0; i< itemimages.length; i++) {
            new Item(itemimages[i]);
     } 
     console.log(items);
