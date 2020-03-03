@@ -80,7 +80,7 @@ randomImages();
 //         case e.target.id === 'center_item_img' :
 //         randomImages();
 // };
-
+11234
 
 var ss = document.getElementById('rr');
 // console.log(ss);
