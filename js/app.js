@@ -76,7 +76,7 @@ function randomImages() {
 }
 randomImages();
 
- console.log(picRelod);
+console.log(picRelod);
 
 //// to make pic not reloud :)
 // console.log(picRelod.length);
