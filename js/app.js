@@ -30,6 +30,7 @@ var totalClick = 0;
 var leftItemimageRandom;
 var rightItemimageRandom;
 var centerItemimageRandom;
+// Item = [];
 
 function Item(name) {
     this.name = name.split('.')[0];
@@ -49,13 +50,14 @@ function randomImages() {
     centerItemimageRandom = items[randomNumber(0, items.length - 1)];
 
 
-    while (leftItemimageRandom === centerItemimageRandom || leftItemimageRandom === rightItemimageRandom || centerItemimageRandom === rightItemimageRandom || picRelod.includes(leftItemimageRandom) || picRelod.includes(rightItemimageRandom) || picRelod.includes(centerItemimageRandom
-    )) {
+    while (leftItemimageRandom === centerItemimageRandom || leftItemimageRandom === rightItemimageRandom || centerItemimageRandom === rightItemimageRandom || picRelod.includes(leftItemimageRandom) || picRelod.includes(rightItemimageRandom) || picRelod.includes(centerItemimageRandom)) {
         leftItemimageRandom = items[randomNumber(0, items.length - 1)];
         rightItemimageRandom = items[randomNumber(0, items.length - 1)];
         centerItemimageRandom = items[randomNumber(0, items.length - 1)];
+        picRelod = [];
+
     }
-    picRelod = [];
+
     picRelod.push(leftItemimageRandom);
     picRelod.push(rightItemimageRandom);
     picRelod.push(centerItemimageRandom);
@@ -75,32 +77,25 @@ function randomImages() {
 
 }
 randomImages();
+gitItem();
 
- console.log(picRelod);
+// local storeg 
+function setItem() {
+    var write = JSON.stringify(items);
+    localStorage.setItem('pic', write);
+}
 
-//// to make pic not reloud :)
-// console.log(picRelod.length);
-// for (var i = 0; i < picRelod.length; i++) {
-//     // console.log(i);
-//     if (picRelod[i] === leftItemimageRandom || picRelod[i] === rightItemimageRandom || picRelod[i] === centerItemimageRandom) {
-//         leftItemimageRandom = items[randomNumber(0, items.length - 1)];
-//         rightItemimageRandom = items[randomNumber(0, items.length - 1)];
-//         centerItemimageRandom = items[randomNumber(0, items.length - 1)];
-//     } else {
-//         picRelod.pop(leftItemimageRandom);
-//         picRelod.pop(rightItemimageRandom);
-//         picRelod.pop(centerItemimageRandom);
-//     }
-//     // console.log(picRelod.length);
-// }
-// picRelod.push(leftItemimageRandom);
-// picRelod.push(rightItemimageRandom);
-// picRelod.push(centerItemimageRandom);
+function gitItem() {
+    var read = localStorage.getItem('pic');
+    items = JSON.parse(read);
+    randomImages();
+}
 
 
 
-// console.log(items);
 
+
+console.log(picRelod);
 
 var container = document.getElementById('container');
 // console.log(ss);
@@ -138,6 +133,7 @@ function clickItem(e) {
 
         chartView();
     }
+    setItem();
 }
 
 // randomHelper func :)
